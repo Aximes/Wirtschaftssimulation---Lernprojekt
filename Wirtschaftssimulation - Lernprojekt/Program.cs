@@ -1,15 +1,14 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace Wirtschaftssimulation___Lernprojekt
-{
-    class Program
-    {
-        static void Main(string[] args)
-        {
-        }
-    }
+namespace Wirtschaftssimulation___Lernprojekt {
+
+	class Program {
+
+		static void Main(string[] args) {
+
+			Vector2 vec = new Vector2(1, 3);
+
+
+		}
+	}
 }

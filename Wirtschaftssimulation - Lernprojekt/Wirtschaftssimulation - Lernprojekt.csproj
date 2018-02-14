@@ -43,6 +43,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AbstractDerivativePredicter.cs" />
+    <Compile Include="IPredictable.cs" />
+    <Compile Include="SimpleDerivatePredicter.cs" />
     <Compile Include="StockExchange.cs" />
     <Compile Include="StockExchangeValue.cs" />
     <Compile Include="Math\Vector2.cs" />

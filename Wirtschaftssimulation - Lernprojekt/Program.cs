@@ -1,8 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Wirtschaftssimulation___Lernprojekt.System.Math;
 
 namespace Wirtschaftssimulation___Lernprojekt
 {
@@ -10,6 +7,9 @@ namespace Wirtschaftssimulation___Lernprojekt
     {
         static void Main(string[] args)
         {
+            Vector2 a = new Vector2(1, 0);
+            Vector2 b = new Vector2(0, 1);
+            Vector2 c = a.Add(b);
         }
     }
 }

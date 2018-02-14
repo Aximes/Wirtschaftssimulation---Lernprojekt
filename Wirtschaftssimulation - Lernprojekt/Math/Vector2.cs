@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Wirtschaftssimulation___Lernprojekt {
+namespace Wirtschaftssimulation___Lernprojekt.Math {
 
 	class Vector2 {
 

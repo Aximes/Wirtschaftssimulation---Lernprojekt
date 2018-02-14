@@ -8,7 +8,6 @@ namespace Wirtschaftssimulation___Lernprojekt.System.Math
 
         public double x = 0.0;
         public double y = 0.0;
-        public Double doubleResult;
 
         // Mein Konstruktor
         public Vector2(double VectorX, double VectorY)

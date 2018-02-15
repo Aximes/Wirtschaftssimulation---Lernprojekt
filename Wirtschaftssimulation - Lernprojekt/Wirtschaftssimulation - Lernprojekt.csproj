@@ -44,11 +44,16 @@
   <ItemGroup>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="System\Math\BankAccount.cs" />
-    <Compile Include="System\Math\Vector2.cs" />
+    <Compile Include="System\Mathematics\Bank.cs" />
+    <Compile Include="System\Mathematics\BankAccount.cs" />
+    <Compile Include="System\Mathematics\Class1.cs" />
+    <Compile Include="System\Mathematics\Vector2.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="System\Math\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

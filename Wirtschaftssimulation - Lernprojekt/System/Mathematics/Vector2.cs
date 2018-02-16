@@ -89,5 +89,10 @@ namespace Wirtschaftssimulation___Lernprojekt.System.Mathematics
         {
             return Other.Subtract(this).getLength();
         }
+
+        public override string ToString()
+        {
+            return x + ", " + y;
+        }
     }
 }

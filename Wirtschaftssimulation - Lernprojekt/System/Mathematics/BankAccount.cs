@@ -16,7 +16,11 @@ namespace Wirtschaftssimulation___Lernprojekt.System.Mathematics
 
         public bool Deposit(decimal Anmount)
         {
+            Console.WriteLine("Transaktion wird durchgeführt!");
+            Console.WriteLine(Balance + " + " + Anmount);
             Balance += Anmount;
+            Console.WriteLine("Ihr neuer Saldo beträgt: " + Balance + " EUR");
+            Console.WriteLine(Anmount + " wurde erfolgreich auf Ihr Konto überwiesen!");
             return true;
         }
 
@@ -24,13 +28,16 @@ namespace Wirtschaftssimulation___Lernprojekt.System.Mathematics
         {
             if (Balance - Anmount > Dispo)
             {
+                Console.WriteLine("Transaktion wird durchgeführt!");
+                Console.WriteLine(Balance + " - " + Anmount);
                 Balance -= Anmount;
-                Console.WriteLine("Transaktion erfolgreich!");
+                Console.WriteLine("Ihr neuer Saldo beträgt: " + Balance +" EUR");
+                Console.WriteLine(Anmount + " wurde erfolgreich vom Konto abgehoben!");
                 return true;
             }
             else
             {
-                Console.WriteLine("Ihr Konto ist nicht ausreichend gedeckt!");
+                ConsoleIO.PrintColoredLine("Ihr Konto ist nicht ausreichend gedeckt!", ConsoleColor.DarkRed);
                 return false;
             }
         }

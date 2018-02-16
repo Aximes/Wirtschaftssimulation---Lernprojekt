@@ -47,6 +47,8 @@
     <Compile Include="System\Mathematics\Bank.cs" />
     <Compile Include="System\Mathematics\BankAccount.cs" />
     <Compile Include="System\Mathematics\Class1.cs" />
+    <Compile Include="System\Mathematics\IBuilding.cs" />
+    <Compile Include="System\Mathematics\IProducer.cs" />
     <Compile Include="System\Mathematics\Vector2.cs" />
   </ItemGroup>
   <ItemGroup>

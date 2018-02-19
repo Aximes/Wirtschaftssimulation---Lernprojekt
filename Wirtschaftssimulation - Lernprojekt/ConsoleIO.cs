@@ -5,9 +5,9 @@ using Wirtschaftssimulation___Lernprojekt.System.Mathematics;
 namespace Wirtschaftssimulation___Lernprojekt
 {
 #pragma warning disable CS0168
-    class ConsoleIO
+    class ConsoleIO : IUserControl
     {
-        public static string PromptString( string prompt, string type )
+        public string PromptString( string prompt, string type )
         {
             Console.WriteLine(prompt);
             Console.Write(type+": ");
@@ -20,7 +20,7 @@ namespace Wirtschaftssimulation___Lernprojekt
             return text;
         }
 
-        public static int PromptNumber( string prompt, string type )
+        public int PromptNumber( string prompt, string type )
         {
             Console.WriteLine(prompt);
             string text;
@@ -42,7 +42,7 @@ namespace Wirtschaftssimulation___Lernprojekt
             return zahl;
         }
 
-        public static string PromptOptions( string prompt, string type, string[] options )
+        public string PromptOptions( string prompt, string type, string[] options )
         {
             Console.WriteLine(prompt);
             for (int i = 0; i < options.Length; i++)
@@ -59,7 +59,7 @@ namespace Wirtschaftssimulation___Lernprojekt
             }
         }
 
-        public static string PromptList(string prompt, string type, string[] list)
+        public string PromptList(string prompt, string type, string[] list)
         {
             for (int i = 0; i < list.Length; i++)
             {
@@ -80,7 +80,7 @@ namespace Wirtschaftssimulation___Lernprojekt
             } 
         }
 
-        public static bool PromptBoolean( string prompt, Boolean defaultValue )
+        public bool PromptBoolean( string prompt, Boolean defaultValue )
         {
             Console.Write(prompt + " " + (defaultValue ? "[Y|n]: " : "[y|N]: "));
             while (true)
@@ -104,7 +104,7 @@ namespace Wirtschaftssimulation___Lernprojekt
             }
         }
 
-        public static string PromptCommand( string prompt, string[] commands )
+        public string PromptCommand( string prompt, string[] commands )
         {
             string text;
             while (true)
@@ -116,7 +116,7 @@ namespace Wirtschaftssimulation___Lernprojekt
             }
         }
 
-        public static Vector2 PromptVector(string prompt)
+        public Vector2 PromptVector(string prompt)
         {
             Console.WriteLine(prompt);
             string text;
@@ -143,7 +143,7 @@ namespace Wirtschaftssimulation___Lernprojekt
             return vector;
         }
 
-        public static void PrintColored( string message, ConsoleColor color )
+        public void PrintColored( string message, ConsoleColor color )
         {
             ConsoleColor current = Console.ForegroundColor;
             Console.ForegroundColor = color;
@@ -151,7 +151,7 @@ namespace Wirtschaftssimulation___Lernprojekt
             Console.ForegroundColor = current;
         }
         
-        public static void PrintColoredLine( string message, ConsoleColor color )
+        public void PrintColoredLine( string message, ConsoleColor color )
         {
             ConsoleColor current = Console.ForegroundColor;
             Console.ForegroundColor = color;

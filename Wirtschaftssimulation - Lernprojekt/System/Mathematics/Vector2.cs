@@ -75,19 +75,19 @@ namespace Wirtschaftssimulation___Lernprojekt.System.Mathematics
             return this;
         }
 
-        public double getLengthSquared()
+        public double GetLengthSquared()
         {
             return Math.Pow(this.x, 2) + Math.Pow(this.y, 2);
         }
 
-        public double getLength()
+        public double GetLength()
         {
-            return Math.Sqrt(getLengthSquared());
+            return Math.Sqrt(GetLengthSquared());
         }
 
-        public double getDistanceTo(Vector2 Other)
+        public double GetDistanceTo(Vector2 Other)
         {
-            return Other.Subtract(this).getLength();
+            return Other.Subtract(this).GetLength();
         }
 
         public override string ToString()

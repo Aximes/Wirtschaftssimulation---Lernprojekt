@@ -9,7 +9,7 @@ namespace Wirtschaftssimulation___Lernprojekt.System.Mathematics
         public decimal Dispo { get; set; }
         public BankAccount(decimal Balance, string Owner, decimal Dispo)
         {
-            this.Balance = Balance;
+            this.Balance = 0;
             this.Owner = Owner;
             this.Dispo = Dispo;
         }
@@ -17,10 +17,9 @@ namespace Wirtschaftssimulation___Lernprojekt.System.Mathematics
         public bool Deposit(decimal Anmount)
         {
             Console.WriteLine("Transaktion wird durchgeführt!");
-            Console.WriteLine(Balance + " + " + Anmount);
             Balance += Anmount;
-            Console.WriteLine("Ihr neuer Saldo beträgt: " + Balance + " EUR");
-            Console.WriteLine(Anmount + " wurde erfolgreich auf Ihr Konto überwiesen!");
+            Program.IO.PrintColoredLine(Anmount.ToString("N2") + " wurde erfolgreich auf Ihr Konto überwiesen!", ConsoleColor.Green);
+            Console.WriteLine("Ihr neuer Saldo beträgt: " + Balance.ToString("N2") + " EUR");
             return true;
         }
 
@@ -29,15 +28,14 @@ namespace Wirtschaftssimulation___Lernprojekt.System.Mathematics
             if (Balance - Anmount > Dispo)
             {
                 Console.WriteLine("Transaktion wird durchgeführt!");
-                Console.WriteLine(Balance + " - " + Anmount);
                 Balance -= Anmount;
-                Console.WriteLine("Ihr neuer Saldo beträgt: " + Balance +" EUR");
-                Console.WriteLine(Anmount + " wurde erfolgreich vom Konto abgehoben!");
+                Program.IO.PrintColoredLine(Anmount.ToString("N2") + " wurde erfolgreich auf Ihr Konto überwiesen!", ConsoleColor.Green);
+                Console.WriteLine("Ihr neuer Saldo beträgt: " + Balance.ToString("N2") +" EUR");
                 return true;
             }
             else
             {
-                ConsoleIO.PrintColoredLine("Ihr Konto ist nicht ausreichend gedeckt!", ConsoleColor.DarkRed);
+                Program.IO.PrintColoredLine("Ihr Konto ist nicht ausreichend gedeckt!", ConsoleColor.DarkRed);
                 return false;
             }
         }

@@ -1,8 +1,5 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Globalization;
-using Wirtschaftssimulation___Lernprojekt.System.Mathematics;
 
 namespace Wirtschaftssimulation___Lernprojekt.System.Mathematics
 {
@@ -13,7 +10,9 @@ namespace Wirtschaftssimulation___Lernprojekt.System.Mathematics
         public decimal Dispo { get; set; }
         public decimal TransactionFee { get; set; }
         public decimal AccountManagementFee { get; set; }
+
         public List<BankAccount> Accounts { get; set; }
+        public List<Bank> Banks { get; set; }
 
         public Bank(string Name, decimal Rate, decimal Dispo, decimal TransactionFee, decimal AccountManagementFee)
         {

@@ -18,14 +18,26 @@ namespace Wirtschaftssimulation___Lernprojekt
         public decimal playerAccount { get; set; }
         public decimal DiffStartMoney { get; set; }
 
+        private decimal BankRate { get; set; }
+        private string BankName { get; set; }
+        private decimal BankDispo { get; set; }
+        private decimal BankTransactionFee { get; set; }
+        private decimal BankAccountManagementFee { get; set; }
+
         public Initialize()
         {
-            string assignedBank = "";
             this.difficulty = difficulty;
             this.sex = sex;
             this.name = name;
-            this.age = age;
+            this.age = 0;
             this.companyName = companyName;
+
+            BankRate = BankRate;
+            BankName = BankName;
+            BankDispo = BankDispo;
+            BankTransactionFee = BankTransactionFee;
+            BankAccountManagementFee = BankAccountManagementFee;
+
             BankStore bStore = new BankStore();
             BankAccount account2 = new BankAccount(10000, "KI1", -10000);
             BankAccount account3 = new BankAccount(10000, "KI2", -10000);
@@ -45,25 +57,34 @@ namespace Wirtschaftssimulation___Lernprojekt
                 Console.WriteLine("\n[" + difficulty + "] " + " '" + sex + "' " + " " + name);
                 this.name = name;
 
-                int age = IO.PromptNumber("Geben Sie ihr Alter an.", "Alter");
+                while (age < 18)
+                {
+                    int age = IO.PromptNumber("Geben Sie ihr Alter an.", "Alter");
+                    this.age = age;
+                }
                 Console.WriteLine("\n[" + difficulty + "] " + " '" + sex + "' " + " " + name + " " + "(" + age + ")");
-                this.age = age;
 
                 string companyName = IO.PromptString("Geben Sie Ihren Firmennamen an.", "Firmenname");
                 Console.WriteLine("\n[" + difficulty + "] " + " '" + sex + "' " + " " + name + " " + "(" + age + ")" + " <" + companyName + "> \n");
                 this.companyName = companyName;
 
-                string currentBank = IO.PromptList("Geben Sie eine Bank an, bei der Sie ihr Startkonto eröffnen möchten", "Bank", bStore.Banks.Select(b => b.Name + "\nRate: " + b.Rate.ToString("P2") + "\t| Dispo: " + b.Dispo.ToString("N2") + "\t| Transaction Fee: " + b.TransactionFee.ToString("P2") + "\t| Account Management Fee: " + b.AccountManagementFee.ToString("P2") + "\n").ToArray());
+                string currentBank = IO.PromptList("Geben Sie eine Bank an, bei der Sie ihr Startkonto eröffnen möchten.", "Bank", bStore.Banks.Select(b => b.Name + "\nRate: " + b.Rate.ToString("P2") + "\t| Dispo: " + b.Dispo.ToString("N2") + "\t| Transaction Fee: " + b.TransactionFee.ToString("P2") + "\t| Account Management Fee: " + b.AccountManagementFee.ToString("P2") + "\n").ToArray());
                 foreach (Bank b in bStore.Banks)
                 {
                     if (b.Name == currentBank)
                     {
-
+                        BankRate = b.Rate;
+                        BankName = b.Name;
+                        BankDispo = b.Dispo;
+                        BankTransactionFee = b.TransactionFee;
+                        BankAccountManagementFee = b.AccountManagementFee;
                         break;
                     }
                 }
+                Console.WriteLine(currentBank);
+                Console.WriteLine("Testfrage: " + BankName + " " + BankDispo);
 
-                bool InitAccept = IO.PromptBoolean("\nSie haben die Schwierigkeit " + difficulty + " gewählt, sind '" + sex + "', heißen " + name + " und sind " + age + " Jahre alt.\nIhre Firma hat den Namen " + companyName + " und ihr Firmenkonto wurde bei der " + assignedBank + " gegründet.\nMöchten Sie bestätigen?: ", true);
+                bool InitAccept = IO.PromptBoolean("\nSie haben die Schwierigkeit " + difficulty + " gewählt.\nSie sind " + (sex == "Männlich" ? "männlichen " : "weiblichen ") + "Geschlechts" + ".\nIhr Name ist " + name + ".\nSie sind " + age + " Jahre alt.\nIhre Firma hat den Namen " + companyName + " und ihr Firmenkonto wurde bei der " + BankName + " gegründet.\nSind Ihre Eingaben korrekt?: ", true);
                 if (InitAccept == true)
                 {
                     break;
@@ -71,13 +92,14 @@ namespace Wirtschaftssimulation___Lernprojekt
                 Console.Clear();
             }
             Diff gameDifficulty = new Diff(difficulty);
-            BankAccount PlayerAccount = new BankAccount(0, name, -10000);
+            BankAccount PlayerAccount = new BankAccount(0, name, BankDispo);
+            Console.WriteLine(BankDispo.ToString("N2"));
 
             Player player1 = new Player(difficulty, sex, name, age, companyName);
-            Console.WriteLine("\nIhr Konto bei der '" + assignedBank + "' wurde eröffnet, " + (sex == "Männlich" ? "Herr " : "Frau ") + name);
+            Console.WriteLine("\nIhr Konto bei der '" + BankName + "' wurde eröffnet, " + (sex == "Männlich" ? "Herr " : "Frau ") + name);
             PlayerAccount.Deposit(gameDifficulty.DiffStartMoney);
 
-            Console.WriteLine("\nHerzlichen Glückwunsch, " + (sex == "Männlich" ? "Herr " : "Frau ") + name + " Sie haben erfolgreich ihre Firma " + companyName + " gegründet.");
+            Console.WriteLine("\nHerzlichen Glückwunsch, " + (sex == "Männlich" ? "Herr " : "Frau ") + name + ", Sie haben erfolgreich ihre Firma " + companyName + " angelegt.");
 
             Console.ReadLine();
         }

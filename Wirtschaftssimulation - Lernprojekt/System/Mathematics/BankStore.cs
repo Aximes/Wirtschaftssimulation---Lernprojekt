@@ -31,3 +31,6 @@ namespace Wirtschaftssimulation___Lernprojekt.System.Mathematics
         }
     }
 }
+
+
+//b.Name + "\nRate: " + b.Rate.ToString("P2") + "\t| Dispo: " + b.Dispo.ToString("N2") + "\t| Transaction Fee: " + b.TransactionFee.ToString("P2") + "\t| Account Management Fee: " + b.AccountManagementFee.ToString("P2") + "\n"

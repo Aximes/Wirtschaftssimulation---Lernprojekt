@@ -13,5 +13,6 @@ namespace Wirtschaftssimulation___Lernprojekt.System.Mathematics
         string CompanyName { get; set; }
         List<BankAccount> Accounts { get; set; }
         List<Bank> Banks { get; set; }
+        int BankID { get; set; }
     }
 }

@@ -12,25 +12,34 @@ namespace Wirtschaftssimulation___Lernprojekt.System.Mathematics
         public decimal TransactionFee { get; set; }
         public decimal AccountManagementFee { get; set; }
         public List<Bank> Banks { get; set; }
+        public List<String> BankNameList { get; set; }
 
         public BankStore()
         {
-            this.Banks = new List<Bank>
+            this.Banks = new List<Bank>();
+            this.BankNameList = new List<String>
             {
-                new Bank("Bank1", rnd.Next(1, 11) / (decimal)100, rnd.Next(1, 30) * 1000, rnd.Next(1, 11) / (decimal)100, rnd.Next(1, 11) / (decimal)100),
-                new Bank("Bank2", rnd.Next(1, 11) / (decimal)100, rnd.Next(1, 30) * 1000, rnd.Next(1, 11) / (decimal)100, rnd.Next(1, 11) / (decimal)100),
-                new Bank("Bank3", rnd.Next(1, 11) / (decimal)100, rnd.Next(1, 30) * 1000, rnd.Next(1, 11) / (decimal)100, rnd.Next(1, 11) / (decimal)100),
-                new Bank("Bank4", rnd.Next(1, 11) / (decimal)100, rnd.Next(1, 30) * 1000, rnd.Next(1, 11) / (decimal)100, rnd.Next(1, 11) / (decimal)100),
-                new Bank("Bank5", rnd.Next(1, 11) / (decimal)100, rnd.Next(1, 30) * 1000, rnd.Next(1, 11) / (decimal)100, rnd.Next(1, 11) / (decimal)100)
+                "Spaßkasse",
+                "Pfostenbank",
+                "CommerzGandals",
+                "Lauchtresor",
+                "DagobertDuck"
             };
+
+            FilledBanks(5);
         }
 
-        public List<Bank> GetBanks()
+        public void FilledBanks(Int32 Anzahl)
         {
-            return this.Banks;
+            for(int i = 1; i <= Anzahl; i++)
+            {
+                this.Banks.Add(new Bank(i, this.BankNameList[i-1], rnd.Next(1, 11) / (decimal)100, rnd.Next(1, 30) * 1000, rnd.Next(1, 11) / (decimal)100, rnd.Next(1, 11) / (decimal)100));
+            }
+        }
+
+        public Bank getBankByID(int id)
+        {
+            return Banks[id-1];
         }
     }
 }
-
-
-//b.Name + "\nRate: " + b.Rate.ToString("P2") + "\t| Dispo: " + b.Dispo.ToString("N2") + "\t| Transaction Fee: " + b.TransactionFee.ToString("P2") + "\t| Account Management Fee: " + b.AccountManagementFee.ToString("P2") + "\n"
